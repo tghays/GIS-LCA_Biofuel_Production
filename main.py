@@ -81,9 +81,6 @@ sr = arcpy.SpatialReference(2264)
 g = arcpy.Geometry()
 
 
-####################    START LOOP FOR MIXED FEEDSTOCK HERE     #####################
-
-
 #Transport emissions associated with 1 tkm of truck transport using Diesel fuel. Format is [GWA, AA, HHPA, EA, SA, HHC,HHNC]. Kg of impact/tkm
 fs_transport_impacts = [2.46E-01, 1.50E-03, 1.10E-04, 2.28E-04, 4.24E-02, 7.57E-09, 3.42E-08]
 # feedstock transportation cursor
@@ -149,6 +146,7 @@ quad_1_percent = .307917889
 quad_2_percent = .051319648
 quad_3_percent = .017595308
 
+# FUNCTION DEFINITION
 ###############################################################################################################
 #  define function to get feedstock transportation routes
 def getClosestRoute(local_farm_geometry, local_farm_FID):
@@ -569,7 +567,7 @@ del key
 
 print('Calculations complete, saving impact values to each life cycle stage shapefile')
 #-----------------------------------CALCULATIONS COMPLETE-----------------------------------
-#-------------WRITING IMPACTS FOR EACH LIFE CYCLE STAGE TO A UNIQUE SHAPEFILE-----
+#-------------WRITING IMPACTS FOR EACH LIFE CYCLE STAGE TO UNIQUE SHAPEFILE-----
 
 # writing impact values from feedstock establishment to shapefile
 est_quad_cursor = arcpy.da.UpdateCursor(est_quads, ['quadSource', 'GWA', 'AA','HHPA','EA','SA', 'HHC','HHNC'])
